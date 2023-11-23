@@ -3,9 +3,9 @@
 namespace NumberToWords\CurrencyTransformer;
 
 use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Language\English\EnglishDictionary;
-use NumberToWords\Language\English\EnglishExponentGetter;
-use NumberToWords\Language\English\EnglishTripletTransformer;
+use NumberToWords\Language\English\UrduDictionary;
+use NumberToWords\Language\English\UrduExponentGetter;
+use NumberToWords\Language\English\UrduTripletTransformer;
 use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
@@ -14,10 +14,10 @@ class EnglishCurrencyTransformer implements CurrencyTransformer
 {
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
-        $dictionary = new EnglishDictionary();
+        $dictionary = new UrduDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();
-        $tripletTransformer = new EnglishTripletTransformer($dictionary);
-        $exponentInflector = new EnglishExponentGetter();
+        $tripletTransformer = new UrduTripletTransformer($dictionary);
+        $exponentInflector = new UrduExponentGetter();
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
@@ -35,13 +35,13 @@ class EnglishCurrencyTransformer implements CurrencyTransformer
 
         $currency = strtoupper($currency);
 
-        if (!array_key_exists($currency, EnglishDictionary::$currencyNames)) {
+        if (!array_key_exists($currency, UrduDictionary::$currencyNames)) {
             throw new NumberToWordsException(
                 sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
             );
         }
 
-        $currencyNames = EnglishDictionary::$currencyNames[$currency];
+        $currencyNames = UrduDictionary::$currencyNames[$currency];
 
         $return = trim($numberTransformer->toWords($decimal));
         $level = ($decimal === 1) ? 0 : 1;

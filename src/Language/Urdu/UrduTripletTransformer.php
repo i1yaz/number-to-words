@@ -1,10 +1,10 @@
 <?php
 
-namespace NumberToWords\Language\English;
+namespace NumberToWords\Language\Urdu;
 
 use NumberToWords\Language\TripletTransformer;
 
-class EnglishTripletTransformer implements TripletTransformer
+class UrduTripletTransformer implements TripletTransformer
 {
     private UrduDictionary $dictionary;
 

@@ -42,6 +42,7 @@ trait ManagesNumberTransformers
         'tk' => Transformer\TurkmenNumberTransformer::class,
         'tr' => Transformer\TurkishNumberTransformer::class,
         'ua' => Transformer\UkrainianNumberTransformer::class,
+        'ur' => Transformer\UrduNumberTransformer::class,
         'yo' => Transformer\YorubaNumberTransformer::class,
     ];
 
